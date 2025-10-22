@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dropdown bug on Next.js 16 with cacheComponents enabled
 
-## Getting Started
+This is a minimal reproducible example for a bug I found in Next.js 16 when using a dropdown component with the `cacheComponents` feature enabled.
 
-First, run the development server:
+## Steps to Reproduce
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone this repository
+2. Install dependencies using `pnpm install`
+3. Run the development server with `pnpm dev`
+4. Open the application in your browser
+5. Click on the "Open Dropdown" button on the top right corner
+6. Click on the "Settings" link in the dropdown menu
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Current behavior
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+It shows the dropdown menu on the "settings" page, even though it's not included there.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Expected behavior
 
-## Learn More
+It shouldn't show the dropdown menu when navigating to a page that doesn't include it.
 
-To learn more about Next.js, take a look at the following resources:
+## Notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- This bug was introduced in Next.js 16-canary.17 (it works fine on canary.16)
+- The bug occurs only when `cacheComponents` is enabled in `next.config.ts`. If we disable it, the dropdown works as expected

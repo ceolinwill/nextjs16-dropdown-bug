@@ -13,7 +13,9 @@ export default function HomePage({ children }: LayoutProps<"/">) {
         <h1>home layout navbar</h1>
         <nav>
           <DropdownMenu>
-            <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+            <DropdownMenuTrigger className="bg-black rounded-lg text-white px-4 py-2">
+              Open Dropdown
+            </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem asChild>
                 <Link href="/settings">Settings</Link>
