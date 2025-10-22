@@ -6,11 +6,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function HomePage({ children }: LayoutProps<"/">) {
+export default function HomePage() {
   return (
     <div>
       <nav className="flex items-center justify-between">
-        <h1>home layout navbar</h1>
+        <h1>home navbar</h1>
         <nav>
           <DropdownMenu>
             <DropdownMenuTrigger className="bg-black rounded-lg text-white px-4 py-2">
@@ -24,8 +24,6 @@ export default function HomePage({ children }: LayoutProps<"/">) {
           </DropdownMenu>
         </nav>
       </nav>
-
-      {children}
     </div>
   );
 }
